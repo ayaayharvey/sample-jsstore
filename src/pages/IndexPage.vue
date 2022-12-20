@@ -1,23 +1,36 @@
 <template>
-  <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-vertical.svg"
-      style="width: 200px; height: 200px"
-    />
-    <div>
-      <div>
-        <input type="text" v-model="filter" placeholder="Search" />
-        <button @click="search">Search</button>
-      </div>
-      <input type="text" v-model="newStudent.name" />
-      <input type="text" v-model="newStudent.gender" />
-      <input type="text" v-model="newStudent.country" />
-      <input type="text" v-model="newStudent.city" />
-    </div>
-    <q-card>
-      RECORDS
-      <q-card-section v-for="student in students" :key="student?.id">
+  <q-page class="q-pa-md row items-start q-gutter-md">
+    <q-card style="width: 400px">
+      <q-card-section class="flex">
+        <q-input type="text" v-model="filter" placeholder="Search" />
+        <q-btn @click="search" icon="search">Search</q-btn>
+      </q-card-section>
+      <q-card-section>
+        <div class="text-h6">ADD FORM</div>
+      </q-card-section>
+      <q-card-section>
+        <q-input type="text" v-model="newStudent.name" placeholder="Name" />
+        <q-input type="text" v-model="newStudent.gender" placeholder="Gender" />
+        <q-input
+          type="text"
+          v-model="newStudent.country"
+          placeholder="Country"
+        />
+        <q-input type="text" v-model="newStudent.city" placeholder="City" />
+        <q-btn @click="add" class="q-mt-md" icon="add"> Add</q-btn>
+      </q-card-section>
+    </q-card>
+
+    <q-card flat bordered style="width: 400px">
+      <q-card-section>
+        <div class="text-h6">RECORDS</div>
+      </q-card-section>
+
+      <q-card-section
+        class="q-pt-none"
+        v-for="student in students"
+        :key="student?.id"
+      >
         <div class="flex">
           <div>{{ student?.name }}</div>
           <div>{{ student?.gender }}</div>
@@ -26,7 +39,6 @@
         </div>
       </q-card-section>
     </q-card>
-    <button @click="add">Add</button>
   </q-page>
 </template>
 

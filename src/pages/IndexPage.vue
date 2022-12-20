@@ -26,17 +26,25 @@
         <div class="text-h6">RECORDS</div>
       </q-card-section>
 
-      <q-card-section
-        class="q-pt-none"
-        v-for="student in students"
-        :key="student?.id"
-      >
-        <div class="flex">
-          <div>{{ student?.name }}</div>
-          <div>{{ student?.gender }}</div>
-          <div>{{ student?.country }}</div>
-          <div>{{ student?.city }}</div>
-        </div>
+      <q-card-section>
+        <q-markup-table>
+          <thead>
+            <tr>
+              <th class="text-left">Name</th>
+              <th class="text-right">Gender</th>
+              <th class="text-right">Country</th>
+              <th class="text-right">City</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="student in students" :key="student?.id">
+              <td class="text-left">{{ student?.name }}</td>
+              <td class="text-right">{{ student?.gender }}</td>
+              <td class="text-right">{{ student?.country }}</td>
+              <td class="text-right">{{ student?.city }}</td>
+            </tr>
+          </tbody>
+        </q-markup-table>
       </q-card-section>
     </q-card>
   </q-page>
